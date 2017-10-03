@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mx.axa.autos.tarifa.Modelo.Call_Sp;
-import mx.axa.autos.tarifa.Objetos.Obj_Marca;
-import mx.axa.autos.tarifa.Objetos.Obj_SubTipo;
+import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
 import mx.axa.autos.tarifa.Objetos.Obj_Usuario;
-import mx.axa.autos.tarifa.Funciones.Func_auxiliar;
 
 @Controller
 public class ApolloController {
@@ -30,32 +28,24 @@ public class ApolloController {
 		return u;
 	}
 	@RequestMapping(value="/subtipo", method=RequestMethod.GET)
-	public @ResponseBody Obj_SubTipo[] getSubtipo(){
-		int i = 0;
-		int ii = 0;
-		Func_auxiliar q = new Func_auxiliar();
-		Obj_SubTipo[] p;
-		String[][] r;
+	public @ResponseBody Obj_Catalogo[] getSubtipo(){
+		Obj_Catalogo[] p;
 		Call_Sp o = new Call_Sp();
-		r = o.obtenSubTipo();
-		while(r[i][0]!=null){
-			ii = ii +1;
-			i = i +1;
-		}
-		i = 0;
-		p = new Obj_SubTipo[ii];
-		while(i<ii){
-			p[i]= q.asigna(r[i][0],r[i][1]);
-			i = i +1;
-		}
+		p = o.obtenSubTipo();
 		return p;
 	}
 	@RequestMapping(value="/marca", method=RequestMethod.GET)
-	public @ResponseBody Obj_Marca[] getMarcas(){
-		Obj_Marca[] p;
+	public @ResponseBody Obj_Catalogo[] getMarcas(){
+		Obj_Catalogo[] p;
 		Call_Sp o = new Call_Sp();
 		p = o.obtenMarca();
 		return p;
 	}
-
+	@RequestMapping(value="/categoria", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getCategoria(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenCategoria();
+		return p;
+	}
 }

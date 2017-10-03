@@ -1,18 +1,12 @@
 package mx.axa.autos.tarifa.Funciones;
 
-import mx.axa.autos.tarifa.Objetos.Obj_SubTipo;
-import mx.axa.autos.tarifa.Objetos.Obj_Marca;
+import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
 
 public class Func_auxiliar {
-	public Obj_SubTipo asigna(String codigo, String descripcion){
-		Obj_SubTipo r = new Obj_SubTipo();
+
+	public Obj_Catalogo asignaData(String codigo, String descripcion){
+		Obj_Catalogo r = new Obj_Catalogo();
 		r.setCodigo(codigo);
-		r.setDescripcion(descripcion);
-		return r;
-	}
-	public Obj_Marca asignamarca(String codigo, String descripcion){
-		Obj_Marca r = new Obj_Marca();
-		r.setClave(codigo);
 		r.setDescripcion(descripcion);
 		return r;
 	}
