@@ -62,4 +62,11 @@ public class ApolloController {
 		p = o.obtenCobertura();
 		return p;
 	}
+	@RequestMapping(value="/deducible", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getDeducible(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenCobertura();
+		return p;
+	}
 }
