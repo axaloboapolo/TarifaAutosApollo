@@ -19,7 +19,7 @@ import org.springframework.context.annotation.PropertySource;
 public class Conexion {
 
 	private static String servidor = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static String usuario = "APOLO_DEVELOPER";
+	private static String usuario = "DEVELOPER";
 	private static String password = "Meto820802#";
 	private static String driver ="oracle.jdbc.OracleDriver";
 	private static Connection conexion;

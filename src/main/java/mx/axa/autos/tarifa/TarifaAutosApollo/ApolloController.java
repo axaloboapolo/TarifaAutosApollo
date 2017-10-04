@@ -48,4 +48,18 @@ public class ApolloController {
 		p = o.obtenCategoria();
 		return p;
 	}
+	@RequestMapping(value="/tipovalor", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getTipoValor(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenTipoValor();
+		return p;
+	}
+	@RequestMapping(value="/cobertura", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getCobertura(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenCobertura();
+		return p;
+	}
 }

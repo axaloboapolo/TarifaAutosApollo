@@ -40,12 +40,7 @@ public class Call_Sp {
 		conexion = new Conexion();
 			try{
 				Connection con =conexion.getconnection();
-				CallableStatement sp = con.prepareCall("{call SP_CAT_SUBTIPO_VEHICULO(?,?,?,?,?,?)}");
-				sp.setString("IN_OPERACION", "CONSULTA");
-				sp.setInt("IN_ID", 1);
-				sp.setString("IN_CODIGO", "CONSULTA");
-				sp.setString("IN_DESCRIPCION", "CONSULTA");
-				sp.setString("IN_ID_EMA", "CONSULTA");
+				CallableStatement sp = con.prepareCall("{call SP_CONS_SUBTIPO(?)}");
 				sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
 				sp.execute();
 				ResultSet rs = (ResultSet)sp.getObject("OUT_C");
@@ -53,11 +48,6 @@ public class Call_Sp {
 					i = i + 1;
 				}
 				m = new Obj_Catalogo[i];
-				sp.setString("IN_OPERACION", "CONSULTA");
-				sp.setInt("IN_ID", 1);
-				sp.setString("IN_CODIGO", "CONSULTA");
-				sp.setString("IN_DESCRIPCION", "CONSULTA");
-				sp.setString("IN_ID_EMA", "CONSULTA");
 				sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
 				sp.execute();
 				rs = (ResultSet)sp.getObject("OUT_C");
@@ -94,7 +84,7 @@ public class Call_Sp {
 			rs = (ResultSet)sp.getObject("OUT_C");
 			i=0;
 			while(rs.next()){
-				m[i] = f.asignaData(rs.getString("CVEMARCA"), rs.getString("MARCA"));
+				m[i] = f.asignaData(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
 				i = i + 1;
 			}
 			con.close();
@@ -136,4 +126,66 @@ public class Call_Sp {
 	}
 		return m;
 	}	
+	public Obj_Catalogo[] obtenTipoValor(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Obj_Catalogo[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_TIPOVALOR(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaData(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaData("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}	
+	public Obj_Catalogo[] obtenCobertura(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Obj_Catalogo[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_COBERTURA(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaData(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaData("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}
 }
