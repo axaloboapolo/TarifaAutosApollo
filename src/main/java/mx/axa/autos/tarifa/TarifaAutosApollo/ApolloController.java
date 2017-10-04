@@ -54,7 +54,7 @@ public class ApolloController {
 		Call_Sp o = new Call_Sp();
 		p = o.obtenTipoValor();
 		return p;
-	}
+	}																											
 	@RequestMapping(value="/cobertura", method=RequestMethod.GET)
 	public @ResponseBody Obj_Catalogo[] getCobertura(){
 		Obj_Catalogo[] p;

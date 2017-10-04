@@ -1,24 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html ">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-resource.js"></script>
-  <script src="src/main/webapp/js/cotizador.js"></script>
+  <script type="text/javascript" src="js/cotizador.js">
+  </script>
 </head>
-<body   data-ng-app="myApp" >
+<body   data-ng-app="demo" >
  <br>
 	<form action="">
-		<div data-ng-controller="circulacionCtrl" data-ng-repeat="categoria in catCirculacion">
-		<input type="radio">{{categoria.catCirculacion}}
-		<!-- 	<input type="radio" name="CatCirculacion" value="Resdiente">Residente <br>
-			<input type="radio" name="CatCirculacion" value="Fronterizo">Fronterizo<br>
-			<input type="radio" name="CatCirculacion" value="Turista">Turista<br>
-		---></div>
+		<div data-ng-controller="circulacionCtrl" data-ng-repeat="x in CatCirc.codigo">
+			<input type="radio" name="rdioButton" value={{CatCirc.codigo}}>{{CatCirc.descripcion}}
 		<br>
+		</div>
 		<div>
 			<select  data-ng-controller=subtipoCtrl>
 				<option data-ng-repeat="subtipo in subtipoveh">{{subtipo.subtipoveh}}</option>
@@ -41,8 +39,8 @@
 			<tr data-ng-repeat="cob in coberturas">
 			<td>{{cob.cobertura}}</td>
 			<td><input type="checkbox"></td>
-			<td>{{cob.deducible}}</td>
-			<td>{{cob.sumaasegurada}}</td>
+			<td data-ng-repeat="deducible in deducible">{{deducible.deducible}}</td>
+			<td data-ng-repeat="suma in suma">{{suma.suma}}</td>
 			</tr>
 			</table>
 			</div>

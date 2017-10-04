@@ -98,7 +98,7 @@ color: #222;
   <dd id="smenu4" onmouseover="javascript:montre('smenu4');" onmouseout="javascript:montre();">
    <ul>
     <li><a href="#">Carga por archivo</a></li>
-    <li><a href="Cotizacion.jsp" target="central">Cotizar parque</a></li>
+    <li><a href="cotizacion.jsp" target="central">Cotizar parque</a></li>
    </ul>
   </dd>
 </dl>
