@@ -273,7 +273,7 @@ public class Call_Sp {
 		conexion = new Conexion();
 		try{
 			Connection con =conexion.getconnection();
-			CallableStatement sp = con.prepareCall("{call SP_REST_MONEDA(?,?,?)}");
+			CallableStatement sp = con.prepareCall("{call SP_REST_PRODUCTO(?,?,?)}");
 			sp.setString("IN_CONVENIO", convenio);
 			sp.setString("IN_VERSION", version);
 			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
@@ -307,7 +307,7 @@ public class Call_Sp {
 		conexion = new Conexion();
 		try{
 			Connection con =conexion.getconnection();
-			CallableStatement sp = con.prepareCall("{call SP_CONS_CARTERA(?)}");
+			CallableStatement sp = con.prepareCall("{call SP_CONS_Segmento(?)}");
 			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
 			sp.execute();
 			ResultSet rs = (ResultSet)sp.getObject("OUT_C");

@@ -1,13 +1,13 @@
 package mx.axa.autos.tarifa.Objetos;
 
 public class Sub_Obj_Moneda {
-	private String moneda;
+	private String moneda_col;
 
-	public String getMoneda() {
-		return moneda;
+	public String getMoneda_col() {
+		return moneda_col;
 	}
 
-	public void setMoneda(String moneda) {
-		this.moneda = moneda;
+	public void setMoneda_col(String moneda) {
+		this.moneda_col = moneda;
 	}
 }
