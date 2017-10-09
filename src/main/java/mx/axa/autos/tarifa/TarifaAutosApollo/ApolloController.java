@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import mx.axa.autos.tarifa.Modelo.Call_Sp;
 import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
+import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
 import mx.axa.autos.tarifa.Objetos.Obj_Usuario;
 
 @Controller
@@ -67,6 +68,14 @@ public class ApolloController {
 		Obj_Catalogo[] p;
 		Call_Sp o = new Call_Sp();
 		p = o.obtenCobertura();
+		return p;
+	}
+	@RequestMapping(value="/wsdatosgenerales", method=RequestMethod.GET)
+	public @ResponseBody Obj_DatosGenerales getDatosGenerales(@RequestParam(value="convenio", required=true) String convenio,
+			  @RequestParam(value="version", required=true) String version) throws SQLException{
+		Obj_DatosGenerales p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenDatosGenerales(convenio, version);
 		return p;
 	}
 }
