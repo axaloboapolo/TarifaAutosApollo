@@ -7,9 +7,14 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
+import mx.axa.autos.tarifa.Objetos.Obj_Cliente;
 import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Cartera;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_EdoCivil;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Genero;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Giro;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Ocupacion;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Producto;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Segmento;
 import oracle.jdbc.OracleTypes; 
@@ -326,6 +331,143 @@ public class Call_Sp {
 			con.close();
 			} catch (SQLException e) {
 			m[0] = f.asignaSegmento("Error", e.getMessage(), null);
+			return m;
+		}finally{		
+	}
+		return m;
+	}
+	
+	public Obj_Cliente obtenCliente(String convenio, String version){
+		Obj_Cliente o = new Obj_Cliente();
+		o.setEdocivil(obtenEdoCivil());
+		o.setGenero(obtenGenero());
+		o.setGiro(obtenGiro());
+		o.setOcupacion(obtenOcupacion());
+		return o;
+	}
+	
+	public Sub_Obj_EdoCivil[] obtenEdoCivil(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Sub_Obj_EdoCivil[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_EDOCIVIL(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Sub_Obj_EdoCivil[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaEdoCivil(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaEdoCivil("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}
+	
+	public Sub_Obj_Genero[] obtenGenero(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Sub_Obj_Genero[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_GENERO(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Sub_Obj_Genero[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaGenero(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaGenero("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}
+	
+	public Sub_Obj_Giro[] obtenGiro(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Sub_Obj_Giro[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_GIRO(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Sub_Obj_Giro[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaGiro(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaGiro("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}
+	
+	public Sub_Obj_Ocupacion[] obtenOcupacion(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Sub_Obj_Ocupacion[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_OCUPACION(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Sub_Obj_Ocupacion[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaOcupacion(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaOcupacion("Error", e.getMessage());
 			return m;
 		}finally{		
 	}
