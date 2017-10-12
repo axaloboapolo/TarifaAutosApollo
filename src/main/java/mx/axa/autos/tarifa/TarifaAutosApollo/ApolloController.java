@@ -13,6 +13,9 @@ import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
 import mx.axa.autos.tarifa.Objetos.Obj_Cliente;
 import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
 import mx.axa.autos.tarifa.Objetos.Obj_Usuario;
+import mx.axa.autos.tarifa.Objetos.Obj_Cobertura;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_SA;
 
 @Controller
 public class ApolloController {
@@ -65,12 +68,19 @@ public class ApolloController {
 		return p;
 	}
 	@RequestMapping(value="/deducible", method=RequestMethod.GET)
-	public @ResponseBody Obj_Catalogo[] getDeducible(){
-		Obj_Catalogo[] p;
+	public @ResponseBody Sub_Obj_Deducible[] getDeducible(@RequestParam(value="cobertura",required=true)String cobertura){
+		Sub_Obj_Deducible[] p;
 		Call_Sp o = new Call_Sp();
-		p = o.obtenCobertura();
+		p = o.obtenDeducible(cobertura);
 		return p;
 	}
+	@RequestMapping(value="/suma" , method=RequestMethod.GET)
+	public @ResponseBody Sub_Obj_SA[] getSA(@RequestParam(value="cobertura",required=true)String cobertura){
+		Sub_Obj_SA[] p;
+		Call_Sp o = new Call_Sp();
+		p =o.obtenSumaA(cobertura);
+		return p;
+		}
 	@RequestMapping(value="/wsdatosgenerales", method=RequestMethod.GET)
 	public @ResponseBody Obj_DatosGenerales getDatosGenerales(@RequestParam(value="convenio", required=true) String convenio,
 			  @RequestParam(value="version", required=true) String version) throws SQLException{
@@ -87,4 +97,6 @@ public class ApolloController {
 		p = o.obtenCliente(convenio, version);
 		return p;
 	}
+	
+	
 }

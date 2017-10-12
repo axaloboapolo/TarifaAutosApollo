@@ -9,6 +9,8 @@ import mx.axa.autos.tarifa.Objetos.Sub_Obj_Producto;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Segmento;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Ocupacion;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_SA;
 
 public class Func_auxiliar {
 
@@ -72,4 +74,16 @@ public class Func_auxiliar {
 		r.setDescripcion_col(descripcion);
 		return r;
 	}
+	public Sub_Obj_Deducible asignaDeducible(String deducible){
+		Sub_Obj_Deducible r = new Sub_Obj_Deducible();
+		r.setDeducible(deducible);
+		return r;
+	  }
+	public Sub_Obj_SA asignaSA (String suma){
+		Sub_Obj_SA r = new Sub_Obj_SA();
+		r.setSa(suma);
+		return r;
+		
+	}
+	
 }

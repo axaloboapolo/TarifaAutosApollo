@@ -17,6 +17,8 @@ import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Ocupacion;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Producto;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Segmento;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
+import mx.axa.autos.tarifa.Objetos.Sub_Obj_SA;
 import oracle.jdbc.OracleTypes; 
 import mx.axa.autos.tarifa.Funciones.Func_auxiliar;
 public class Call_Sp {
@@ -473,4 +475,73 @@ public class Call_Sp {
 	}
 		return m;
 	}
+	
+	public Sub_Obj_SA[] obtenSumaA(String cobertura){
+		int i =0;
+		Func_auxiliar f= new Func_auxiliar();
+		Sub_Obj_SA [] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con = conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_SA(?,?)}");
+			sp.registerOutParameter("OUT_C",  OracleTypes.CURSOR);
+			sp.setString("IN_COBERTURA",cobertura);
+			sp.execute();
+			ResultSet rs =(ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i =i+1;
+				}
+			m=new Sub_Obj_SA[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs =(ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i]=f.asignaSA(rs.getString("SA"));
+				i=i+1;
+			}
+			con.close();
+				}catch(SQLException e){
+					m[0] = f.asignaSA(e.getMessage());
+					return m;
+				}finally{
+				}
+					return m;
+					
+				
+			}
+	public Sub_Obj_Deducible[] obtenDeducible(String cobertura){
+		int i =0;
+		Func_auxiliar f= new Func_auxiliar();
+		Sub_Obj_Deducible [] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con = conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_DEDUCIBLE(?,?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.setString("IN_COBERTURA",cobertura);
+			sp.execute();
+			ResultSet rs =(ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i =i+1;
+				}
+			m=new Sub_Obj_Deducible[i];
+			sp.registerOutParameter("OUT_C",OracleTypes.CURSOR);
+			sp.execute();
+			rs =(ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i]=f.asignaDeducible(rs.getString("deducible"));
+				i=i+1;
+			}
+			con.close();
+				}catch(SQLException e){
+					m[0] = f.asignaDeducible(e.getMessage());
+					return m;
+				}finally{
+				}	return m;
+					
+				}
+			
+	
 }
