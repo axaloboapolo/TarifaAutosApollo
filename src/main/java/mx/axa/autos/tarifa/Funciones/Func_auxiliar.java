@@ -7,6 +7,7 @@ import mx.axa.autos.tarifa.Objetos.Sub_Obj_Genero;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Giro;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Producto;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Segmento;
+import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Catalogo;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Ocupacion;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
@@ -83,7 +84,12 @@ public class Func_auxiliar {
 		Sub_Obj_SA r = new Sub_Obj_SA();
 		r.setSa(suma);
 		return r;
-		
 	}
-	
+	public WS_Obj_Catalogo asignaWSData(String codigo, String descripcion, String idEma){
+		WS_Obj_Catalogo r = new WS_Obj_Catalogo();
+		r.setCodigo(codigo);
+		r.setDescripcion(descripcion);
+		r.setIdEma(idEma);
+		return r;
+	}
 }

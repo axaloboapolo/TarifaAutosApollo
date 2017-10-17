@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mx.axa.autos.tarifa.Modelo.Call_Sp;
+import mx.axa.autos.tarifa.Modelo.WS_Data;
 import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
 import mx.axa.autos.tarifa.Objetos.Obj_Cliente;
 import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
@@ -16,6 +17,7 @@ import mx.axa.autos.tarifa.Objetos.Obj_Usuario;
 import mx.axa.autos.tarifa.Objetos.Obj_Cobertura;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_SA;
+import mx.axa.tarifa.Objetos_Servicios.WS_DatosGenerales;
 
 @Controller
 public class ApolloController {
@@ -82,11 +84,11 @@ public class ApolloController {
 		return p;
 		}
 	@RequestMapping(value="/wsdatosgenerales", method=RequestMethod.GET)
-	public @ResponseBody Obj_DatosGenerales getDatosGenerales(@RequestParam(value="convenio", required=true) String convenio,
+	public @ResponseBody WS_DatosGenerales getDatosGenerales(@RequestParam(value="convenio", required=true) String convenio,
 			  @RequestParam(value="version", required=true) String version) throws SQLException{
-		Obj_DatosGenerales p;
-		Call_Sp o = new Call_Sp();
-		p = o.obtenDatosGenerales(convenio, version);
+		WS_DatosGenerales p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWSDatosGenerales(convenio, version);
 		return p;
 	}
 	@RequestMapping(value="/wscliente", method=RequestMethod.GET)

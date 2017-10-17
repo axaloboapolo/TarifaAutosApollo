@@ -5,6 +5,7 @@ public class Obj_Cliente {
 	private Sub_Obj_Ocupacion[] ocupacion;
 	private Sub_Obj_Giro[] giro;
 	private Sub_Obj_EdoCivil[] edocivil;
+	
 	public Sub_Obj_Genero[] getGenero() {
 		return genero;
 	}

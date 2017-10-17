@@ -1,9 +1,9 @@
-package mx.axa.autos.tarifa.Objetos;
+package mx.axa.tarifa.Objetos_Servicios;
 
-public class Obj_Catalogo {
+public class WS_Obj_Catalogo {
 	private String Codigo;
 	private String Descripcion;
-	private String Id_Ema;
+	private String IdEma;
 	
 	public String getCodigo() {
 		return Codigo;
@@ -17,11 +17,10 @@ public class Obj_Catalogo {
 	public void setDescripcion(String descripcion) {
 		Descripcion = descripcion;
 	}
-	public String getId_Ema() {
-		return Id_Ema;
+	public String getIdEma() {
+		return IdEma;
 	}
-	public void setId_Ema(String id_Ema) {
-		Id_Ema = id_Ema;
+	public void setIdEma(String idEma) {
+		IdEma = idEma;
 	}
-
 }
