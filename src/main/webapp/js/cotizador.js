@@ -1,4 +1,5 @@
 var app = angular.module('cotizar', []);
+	
 	app.controller('catcirc', function($scope, $http){
 		$http.get('http://localhost:8090/categoria').
 			then(function(response) {
@@ -27,36 +28,52 @@ var app = angular.module('cotizar', []);
 			});
 	});
 	
-	
-	var coberturasCtrl = function($scope){
-		$scope.cobertura = app.controller('coberturas', function($scope, $http){
-			$http.get('http://localhost:8090/cobertura').
-				then(function(response) {
-					$scope.getCob = response.data;
-				});
+	app.controller('deddm', function($scope, $http){
+		$http.get('http://localhost:8090/deducible?cobertura=DM').
+			then(function(response) {
+				$scope.getDed = response.data;
 			});
+	});
 	
-	var deducibleCtrl = function ($scope){
-		$scope.deducible = app.controller('deducible',function($scope,$http){
-			$http.get('http://localhost:8090/deducible').
-				then(function(response){
-					$scope.getDed=response.data;
-				});
-		
-		});
-	var sumaCtrl = function ($scope){
-		$scope.deducible = app.controller('suma',function($scope,$htp){
-			http.get('http://localhost:8090/suma').
-				then(function(response){
-					$scope.getSuma=response.data;
-				});
+	app.controller('dedrt', function($scope, $http){
+		$http.get('http://localhost:8090/deducible?cobertura=RT').
+			then(function(response){
+				$scope.getRt = response.data;
 			});
-		}
-	}
-		
-	};
+	});
 	
-		
-		
-		
+	app.controller('sarc', function($scope,$http){
+		$http.get('http://localhost:8090/suma?cobertura=RC').
+			then(function(response){
+				$scope.getRc= response.data;
+			});
+	});
+	
+	app.controller('sarcp', function($scope,$http){
+		$http.get('http://localhost:8090/suma?cobertura=RCP').
+			then(function(response){
+				$scope.getRcp = response.data;
+			});
+	});
+	
+	app.controller('sagmo', function($scope,$http){
+		$http.get('http://localhost:8090/suma?cobertura=GMO').
+			then(function(response){
+				$scope.getsagmo = response.data;
+			});
+	});
+	
+	app.controller('saacc', function($scope,$http){
+		$http.get('http://localhost:8090/suma?cobertura=ACC').
+			then(function(response){
+				$scope.getsaacc = response.data;
+			});
+	});
+	
+	app.controller('sarcv', function($scope,$http){
+		$http.get('http://localhost:8090/suma?cobertura=RCV').
+			then(function(response){
+				$scope.getrcv = response.data;
+			});
+	});
 	

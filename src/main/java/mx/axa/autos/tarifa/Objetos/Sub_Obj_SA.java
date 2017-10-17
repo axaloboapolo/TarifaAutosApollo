@@ -1,16 +1,14 @@
 package mx.axa.autos.tarifa.Objetos;
 
 public class Sub_Obj_SA {
-	private double sa;
+	private String sa;
 
-	public double getSa() {
+	public String getSa() {
 		return sa;
 	}
 
-	public void setSa(double sa) {
+	public void setSa(String sa) {
 		this.sa = sa;
 	}
-
-	
 
 }

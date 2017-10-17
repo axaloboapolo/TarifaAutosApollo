@@ -33,290 +33,50 @@
 			</select>
 		</div>
 	    <br>
-		<div>
-			<button data-ng-click="dialog.dialog_open()">Marcas</button>
-			
+		<div data-ng-controller="deddm">
+			<label>Deducible DM</label>
+				<select data-ng-model="deducibledm" data-ng-options="x.deducible for x in getDed">
+				</select>
 		</div>
-	
-	
-		
-		<div  data-ng-app="cobert" data-ng-controller="coberturas">
-			<table id="table-1">
-				<thead>
-					<tr>
-						<th>Cobertura</th>
-						<th>Aplica</th>
-						<th>Deducible</th>
-						<th>SA</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>DM</td>
-            			<td><input type="checkbox"></td>
-            			<td data-ng-controller="SelectDeducibleDM">
-                		<select data-ng-model="selectedDM" data-ng-options="y.deducible for (x, y) in getDed" >
-                		</select>
-            			</td>
-            			<td data-ng-controller="SelectSADM">
-                		<select data-ng-model="selectedSaDM" data-ng-options="y.SA for (x, y) in getSuma"></select>
-            			</td>
-            		</tr>
-					<tr>
-						<td>Robo total</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleRT">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSART">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Responsabilidad civil</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleRC">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSARC">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Gastos Medicos</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleGM">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAGM">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Cristales</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleCR">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSACR">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Defensa Legal</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleDL">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSADL">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Servicios de Asistencia</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleSERVAS">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSASERVAS">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Accidentes al conductor</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleACC">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAACC">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Extencion de RC</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleERC">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAERC">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Ampliacion de RC</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleARC">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAARC">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Equipo especial DM</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleEEDM">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAEEDM">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Equipo especial RT</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleEERT">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAEERT">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Adaptaciones y conversiones DM</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleADCDM">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAADCDM">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Adaptaciones y conversiones RT</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleADCRT">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectADCRT">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >Eliminacion de deducible </td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleED">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAED">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >RC Viajero</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleRCV">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSARCV">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >Perdida Total por colision</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeduciblePTC">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAPTC">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >RC Personas</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleRCP">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSARCP">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >ASRT</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleASRT">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAASRT">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >Sigue con Auto</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleSCA">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSASCA">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td >Robo parcial de interiores</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleRPI">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSARPI">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Gastos de transporte</td>
-						<td><input type="checkbox"></td>
-						<td data-ng-controller="SelectDeducibleGTR">
-							<select  data-ng-model="selectedded" data-ng-options="y.deducible for (x,y) in getDed">
-							</select>
-						</td>
-						<td data-ng-controller="SelectSAGTR">
-							<select data-ng-model="selectedsum" data-ng-options="y.suma for (x,y) in getSuma">
-							</select>
-						</td>
-					</tr>
-				</tbody>
-				
-			</table>
+		<div data-ng-controller="dedrt">	
+			<label>Deducible RT</label>
+				<select data-ng-model="deduciblert" data-ng-options="x.deducible for x in getRt">
+				</select>
+		</div>
+		<div data-ng-controller="sarc">
+			<label>Responsabilidad Civil</label>
+				 <select data-ng-model="saresc" data-ng-options="x.sa for x in getRc"></select>
+		</div>	
+		<div data-ng-controller="sarcp">
+			<label>RC personas en Exceso</label>
+				<select data-ng-model="sarcp" data-ng-options="x.sa for x in getRcp"></select>
+		</div>
+		<div data-ng-controller="sagmo">
+			<label>Gastos Medicos por Ocupante</label>
+				<select data-ng-model="sagmo" data-ng-options="x.sa for x in getsagmo"></select>
+		</div>
+		<div data-ng-controller="saacc">
+			<label>Accidentes al conductor</label>
+				<select data-ng-model="saacc" data-ng-options="x.sa for x in getsaacc"></select>
+		</div>
+		<div data-ng-controller="sarcv">
+			<label>RC Viajero</label>
+				<select data-ng-model="rcv" data-ng-options="x.sa for x in getrcv"></select>
+		</div>
+		<div>
+			<label>Extencion RC</label><input type="checkbox">
+		</div>
+		<div>
+			<label>Gastos Medicos por Evento</label><input type="checkbox">
+		</div>
+		<div>
+			<label>Defensa Legal</label><input type="checkbox">
+		</div>
+		<div>
+			<label>Servicios de Asistencia</label><input type="checkbox">
+		</div>
+		<div>
+			<label>Sigue con Auto</label><input type="checkbox">
 		</div>
 	</form>
 			

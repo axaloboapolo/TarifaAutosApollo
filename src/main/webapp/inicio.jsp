@@ -24,7 +24,7 @@
 		</table>
 	</div>
 	<iframe src="menu.jsp" frameborder="0" scrolling="no" align="left"></iframe>
-	<iframe	frameborder="1" scrolling="no" align="middle" name="central" height="400" width="700"></iframe>
+	<iframe	frameborder="1" frameborder="0" scrolling="no" align="middle" name="central" height="500" width="700"></iframe>
 	
 </body>
 </html>

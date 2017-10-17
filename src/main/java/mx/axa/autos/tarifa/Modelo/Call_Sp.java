@@ -497,7 +497,7 @@ public class Call_Sp {
 			rs =(ResultSet)sp.getObject("OUT_C");
 			i=0;
 			while(rs.next()){
-				m[i]=f.asignaSA(rs.getString("SA"));
+				m[i]=f.asignaSA(rs.getString("SUMA_ASEGURADA"));
 				i=i+1;
 			}
 			con.close();

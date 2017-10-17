@@ -1,15 +1,15 @@
 package mx.axa.autos.tarifa.Objetos;
 
 public class Sub_Obj_Deducible {
-	private double deducible;
+	
+	private String deducible;
 
-	public double getDeducible() {
+	public String getDeducible() {
 		return deducible;
 	}
 
-	public void setDeducible(double deducible) {
+	public void setDeducible(String deducible) {
 		this.deducible = deducible;
 	}
-	
 
 }
