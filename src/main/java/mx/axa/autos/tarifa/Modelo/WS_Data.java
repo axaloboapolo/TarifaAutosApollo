@@ -4,12 +4,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;  
-import java.sql.Types;
 
 import oracle.jdbc.OracleTypes; 
 import mx.axa.autos.tarifa.Funciones.Func_auxiliar;
-import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
-import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
 import mx.axa.tarifa.Objetos_Servicios.*;
 
 public class WS_Data {
@@ -21,6 +18,7 @@ public class WS_Data {
 		r.setProducto(obtenWSProducto(convenio, version));
 		r.setTipovigencia(obtenWSTipoVigencia(convenio, version));
 		r.setSegmentomercado(obtenWSSegmentoMercado(convenio, version));
+		r.setCartera(obtenWSCartera(convenio, version));
 		return r;
 	}
 	
@@ -167,6 +165,88 @@ public class WS_Data {
 	}
 		return r;
 	}
+	
+	public WS_Cartera obtenWSCartera(String convenio, String version){
+		int i = 0;
+		WS_Cartera r = new WS_Cartera();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_CARTERA(?,?,?)}");
+			sp.setString("IN_CONVENIO", convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_CARTERA"), rs.getString("DESCRIPCION"), rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setCartera_data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("Eror",e.getMessage(),null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_DatosCliente obtenDatosCliente(String convenio, String version){
+		WS_DatosCliente r = new WS_DatosCliente();
+		r.setGenero(obtenWSGenero(convenio, version));
+		//r.setGiro(giro);
+		//r.setOcupacion(ocupacion);
+		//r.setEstadocivil(estadocivil);
+		return r;
+	}
+	
+	public WS_Genero obtenWSGenero(String convenio, String version){
+		int i = 0;
+		WS_Genero r = new WS_Genero();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_GENERO(?,?,?)}");
+			sp.setString("IN_CONVENIO", convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_CARTERA"), rs.getString("DESCRIPCION"), rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setGenero_data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("Eror",e.getMessage(),null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
 	
 	}
 

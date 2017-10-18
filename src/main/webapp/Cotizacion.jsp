@@ -11,6 +11,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/css/ngDialog.css" type="text/css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/css/ngDialog-theme-default.css" type="text/css" rel="stylesheet">
 	<script src="js/cotizador.js"></script>
+	<link href="css/cotizador.css" rel="stylesheet" type="text/css"/>
 	<script src="js/coberturas.js"></script>
 </head>
 <body data-ng-app="cotizar">
@@ -78,6 +79,33 @@
 		<div>
 			<label>Sigue con Auto</label><input type="checkbox">
 		</div>
+		Show: <input type="checkbox" data-ng-model="checked" aria-label="Toggle ngShow"><br />
+		<div class="check-element animate-show-hide" data-ng-show="checked">
+			<table id="table-1">
+				<thead>
+					<tr>
+						<th>Marca</th>
+						<th>Codigo</th>
+						<th>Aplicar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>CHEVROLET</td>
+						<td>CH</td>
+						<td><input type="checkbox" name="aplica"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	
 	</form>
 			
 			
