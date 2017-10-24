@@ -7,15 +7,15 @@
 	<title>Insert title here</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-resource.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/js/ngDialog.min.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/css/ngDialog.css" type="text/css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/css/ngDialog-theme-default.css" type="text/css" rel="stylesheet">
 	<script src="js/cotizador.js"></script>
 	<link href="css/cotizador.css" rel="stylesheet" type="text/css"/>
 	<script src="js/coberturas.js"></script>
 </head>
 <body data-ng-app="cotizar">
-	<form id="Cotizador">
+	<form id="Cotizador" action="/tarifa" method="post">
+	<table>
+	<tr>
+	<td>
 		<div data-ng-controller="catcirc">
 			<label>Categoria de circulacion</label>
 			<select data-ng-model="selectedCat" data-ng-options="y.descripcion for (x, y) in getCat">
@@ -63,7 +63,12 @@
 		<div data-ng-controller="sarcv">
 			<label>RC Viajero</label>
 				<select data-ng-model="rcv" data-ng-options="x.sa for x in getrcv"></select>
+				
 		</div>
+		
+		
+		</td>
+		<td>
 		<div>
 			<label>Extencion RC</label><input type="checkbox">
 		</div>
@@ -79,9 +84,36 @@
 		<div>
 			<label>Sigue con Auto</label><input type="checkbox">
 		</div>
-		Show: <input type="checkbox" data-ng-model="checked" aria-label="Toggle ngShow"><br />
+		<div data-ng-controller="uso">
+			<label>Uso</label>
+				<select data-ng-model="uso" data-ng-options="x.uso for x in getUso"></select>
+		</div>
+	    <div>
+			<label>Derechos de poliza</label>
+				<input type="number" min="0" max="" name="derechos">	
+		</div>
+		<div>
+			<label>Descuento</label>
+				<input type="number" min="0" max="" name="descuento">
+		</div>
+		<div>
+			<label>Comision</label>
+				<input type="number" min="0" max="" name="comision">
+		</div>
+		<div>
+			<label>Cesion de Comision</label>
+				<input type="number" min="0" max="" name="cesion">
+		</div>
+		
+		<input type="submit" value="Cotizar">	
+			</td>
+		<tr>		
+	</table>
+	<div>
+		Marcas<input type="checkbox" data-ng-model="checked" aria-label="Toggle ngShow"><br />
 		<div class="check-element animate-show-hide" data-ng-show="checked">
-			<table id="table-1">
+		<input type="checkbox" data-ng-model="all">Seleccionar Todos
+			<table id="table-1" data-ng-controller="marca">
 				<thead>
 					<tr>
 						<th>Marca</th>
@@ -90,22 +122,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>CHEVROLET</td>
-						<td>CH</td>
-						<td><input type="checkbox" name="aplica"></td>
+					<tr data-ng-model="marcas" data-ng-repeat="marca in getMarca">
+						<td>{{marca.descripcion}}</td>
+						<td>{{marca.codigo}}</td>
+						<td><input type="checkbox" name="aplica" data-ng-checked="all"></td>
 					</tr>
 				</tbody>
-				<tfoot>
-					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
-					</tr>
-				</tfoot>
 			</table>
 		</div>
-	
+		</div>
 	</form>
 			
 			

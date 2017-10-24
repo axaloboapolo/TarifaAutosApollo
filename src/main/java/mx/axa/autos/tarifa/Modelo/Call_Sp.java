@@ -542,6 +542,67 @@ public class Call_Sp {
 				}	return m;
 					
 				}
-			
+	public Obj_Catalogo[] obtenUso(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Obj_Catalogo[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_USO(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaData(rs.getString("CODIGO"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaData("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}	
 	
+	public Obj_Catalogo[] obtenIndiceCat(){
+		int i = 0;
+		Func_auxiliar f = new Func_auxiliar();
+		Obj_Catalogo[] m = null;
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_CONS_INDEXCAT(?)}");
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			m = new Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				m[i] = f.asignaData(rs.getString("NOMBRE_TABLA"), rs.getString("DESCRIPCION"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			m[0] = f.asignaData("Error", e.getMessage());
+			return m;
+		}finally{		
+	}
+		return m;
+	}
 }

@@ -77,6 +77,13 @@ var app = angular.module('cotizar', []);
 			});
 	});
 	
+	app.controller('uso', function($scope,$http){
+				$http.get('http://localhost:8090/uso').
+					then(function(response){
+						$scope.getUso = response.data;
+					});
+			});
+	
 	it('should check ngShow', function() {
 		  var checkbox = element(by.model('checked'));
 		  var checkElem = element(by.css('.check-element'));

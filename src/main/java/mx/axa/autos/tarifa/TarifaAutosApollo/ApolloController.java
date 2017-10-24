@@ -17,7 +17,10 @@ import mx.axa.autos.tarifa.Objetos.Obj_Usuario;
 import mx.axa.autos.tarifa.Objetos.Obj_Cobertura;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Deducible;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_SA;
+import mx.axa.tarifa.Objetos_Servicios.WS_CatCP;
+import mx.axa.tarifa.Objetos_Servicios.WS_DatosCliente;
 import mx.axa.tarifa.Objetos_Servicios.WS_DatosGenerales;
+import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Fichero;
 
 @Controller
 public class ApolloController {
@@ -92,13 +95,45 @@ public class ApolloController {
 		return p;
 	}
 	@RequestMapping(value="/wscliente", method=RequestMethod.GET)
-	public @ResponseBody Obj_Cliente getDatosCliente(@RequestParam(value="convenio", required=true) String convenio,
+	public @ResponseBody WS_DatosCliente getDatosCliente(@RequestParam(value="convenio", required=true) String convenio,
 			  @RequestParam(value="version", required=true) String version) throws SQLException{
-		Obj_Cliente p;
-		Call_Sp o = new Call_Sp();
-		p = o.obtenCliente(convenio, version);
+		WS_DatosCliente p;
+		WS_Data o = new WS_Data();
+		p = o.obtenDatosCliente(convenio, version);
 		return p;
 	}
 	
+	@RequestMapping(value="/wscp", method=RequestMethod.GET)
+	public @ResponseBody WS_CatCP[] getDatosCP(@RequestParam(value="cp", required=true) int cp) throws SQLException{
+		WS_CatCP[] p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWScatCP(cp);
+		return p;
+	}
 	
+	@RequestMapping(value="/uso", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getUso(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenUso();
+		return p;
+	}
+	
+	@RequestMapping(value="/indicecat", method=RequestMethod.GET)
+	public @ResponseBody Obj_Catalogo[] getIndiceCat(){
+		Obj_Catalogo[] p;
+		Call_Sp o = new Call_Sp();
+		p = o.obtenIndiceCat();
+		return p;
+	}
+
+	@RequestMapping(value="/wsfichero", method=RequestMethod.GET)
+	public @ResponseBody WS_Obj_Fichero[] getFichero(@RequestParam(value="convenio", required=true) String convenio,
+			  @RequestParam(value="version", required=true) String version) throws SQLException{
+		WS_Obj_Fichero [] p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWSObjFichero(convenio,version);
+		return p;
+	}
+
 }
