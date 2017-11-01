@@ -10,6 +10,7 @@ import mx.axa.autos.tarifa.Objetos.Sub_Obj_Producto;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Segmento;
 import mx.axa.tarifa.Objetos_Servicios.WS_CatCP;
 import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Catalogo;
+import mx.axa.tarifa.Objetos_Servicios.WS_Obj_CoberturaRest;
 import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Fichero;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Moneda;
 import mx.axa.autos.tarifa.Objetos.Sub_Obj_Ocupacion;
@@ -114,8 +115,7 @@ public class Func_auxiliar {
 		r.setId_asenta_cpcons(id_asenta_cpcons);
 		return r;
 	}
-	public WS_Obj_Fichero asignaWSObjFichero(String ID ,	String CLVAMIS ,	String CVEVEH ,	String MODELO ,	String DESCRIPCION ,	String CVEMARCA ,	String CVESUBTIPO ,	String CVECATEGORIA ,	String NOMCATEGORIA ,	String MARCA ,	String VERSION ,	String CVEVERSION ,	String DESCLINEA ,	String CVELINEA ,	String GPOEST ,	String NOMGPO ,	String MARCATIPOSESA ,	String CVEAMISSESA ,	String CLASIFVEH ,	String GPORC ,	String UID_ ,	String LITROS ,	String CAPACIDADCARGATON ,	String TRANSMISION ,	String AIREACONDICIONADO ,	String PASAJEROS ,	String PUERTAS ,	String CARROCERIA ,	String TAPICASIENTOS ,	String PESO ,	String POTENCIA ,	String CILINDROS ,	String CILINDRADA ,	String ACELERACION ,	String LONGITUD ,	String PARMOTOR ,	String COMBUSTIBLE ,	String TIPODEMOTOR ,	String TIPOCABINA ,	String CAPACIDADENPIES ,	String NUMERODEEJES ,	String TIPODESUSPENSION ,	String TIPODEEQUIPODEREFRIGERACION ,	String TIPODEMATERIAL ,	String SUBTIPODEVEHICULO ,	String CAMPO_ADIC2 ,	String CAMPO_ADIC3 ,	String CAMPO_ADIC4 ,	String CAMPO_ADIC5 ,	String CAMPO_ADIC6 ,	String MONEDA ,	String VALORNUEVOJATO ,	String FACTUALIZAVNJATO ,	String FBAJAVNJATO ,	String VAUTALTO ,	String VAUTBAJO ,	String FACTUALIZAAUT ,	String FBAJAAUT ,	String VEBCALTO ,	String VEBCBAJO ,	String FACTUALIZAEBC ,	String FBAJAEBC ,	String V1SINIESTROS ,	String V2SINIESTROS ,	String FACTUALIZANUEVOSINIESTROS ,	String FACTUALIZAUSADOSINIESTROS ,	String V2ACTUARIAL1 ,	String FACTUALIZAVALORACTUARIAL1 ,	String FBAJAVALORACTUARIAL1 ,	String VALOR_ADICIONAL_1 ,	String F_ACTUALIZA_VALOR_ADI_1 ,	String VALOR_ADICIONAL_2 ,	String F_ACTUALIZA_VALOR_ADI_2 ,	String VALOR_ADICIONAL_3 ,	String F_ACTUALIZA_VALOR_ADI_3
-){
+	public WS_Obj_Fichero asignaWSObjFichero(String ID ,	String CLVAMIS ,	String CVEVEH ,	String MODELO ,	String DESCRIPCION ,	String CVEMARCA ,	String CVESUBTIPO ,	String CVECATEGORIA ,	String NOMCATEGORIA ,	String MARCA ,	String VERSION ,	String CVEVERSION ,	String DESCLINEA ,	String CVELINEA ,	String GPOEST ,	String NOMGPO ,	String MARCATIPOSESA ,	String CVEAMISSESA ,	String CLASIFVEH ,	String GPORC ,	String UID_ ,	String LITROS ,	String CAPACIDADCARGATON ,	String TRANSMISION ,	String AIREACONDICIONADO ,	String PASAJEROS ,	String PUERTAS ,	String CARROCERIA ,	String TAPICASIENTOS ,	String PESO ,	String POTENCIA ,	String CILINDROS ,	String CILINDRADA ,	String ACELERACION ,	String LONGITUD ,	String PARMOTOR ,	String COMBUSTIBLE ,	String TIPODEMOTOR ,	String TIPOCABINA ,	String CAPACIDADENPIES ,	String NUMERODEEJES ,	String TIPODESUSPENSION ,	String TIPODEEQUIPODEREFRIGERACION ,	String TIPODEMATERIAL ,	String SUBTIPODEVEHICULO ,	String CAMPO_ADIC2 ,	String CAMPO_ADIC3 ,	String CAMPO_ADIC4 ,	String CAMPO_ADIC5 ,	String CAMPO_ADIC6 ,	String MONEDA ,	String VALORNUEVOJATO ,	String FACTUALIZAVNJATO ,	String FBAJAVNJATO ,	String VAUTALTO ,	String VAUTBAJO ,	String FACTUALIZAAUT ,	String FBAJAAUT ,	String VEBCALTO ,	String VEBCBAJO ,	String FACTUALIZAEBC ,	String FBAJAEBC ,	String V1SINIESTROS ,	String V2SINIESTROS ,	String FACTUALIZANUEVOSINIESTROS ,	String FACTUALIZAUSADOSINIESTROS ,	String V2ACTUARIAL1 ,	String FACTUALIZAVALORACTUARIAL1 ,	String FBAJAVALORACTUARIAL1 ,	String VALOR_ADICIONAL_1 ,	String F_ACTUALIZA_VALOR_ADI_1 ,	String VALOR_ADICIONAL_2 ,	String F_ACTUALIZA_VALOR_ADI_2 ,	String VALOR_ADICIONAL_3 ,	String F_ACTUALIZA_VALOR_ADI_3){
 		WS_Obj_Fichero r = new WS_Obj_Fichero();
 		r.setACELERACION(ACELERACION);
 		r.setAIREACONDICIONADO(AIREACONDICIONADO);
@@ -193,6 +193,18 @@ public class Func_auxiliar {
 		r.setVERSION(VERSION);
 		return r;
 	}
+	public WS_Obj_CoberturaRest aisgnaWSObjCobRest(String codCobertura,String descripcion,String id_ema,String sumaAsegurada,String deducible){
+		WS_Obj_CoberturaRest r = new WS_Obj_CoberturaRest();
+		r.setCodCobertura(codCobertura);
+		r.setDescripcion(descripcion);
+		r.setId_ema(id_ema);
+		r.setDeducible(deducible);
+		r.setSumaAsegurada(sumaAsegurada);
+		return r;
+		
+	}
+	
+
 	
 	
 }

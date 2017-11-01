@@ -395,7 +395,7 @@ public class WS_Data {
 		conexion = new Conexion();
 		try{
 			Connection con =conexion.getconnection();
-			CallableStatement sp = con.prepareCall("{call SP_REST_Fichero(?,?,?)}");
+			CallableStatement sp = con.prepareCall("{call SP_REST_FICHERO(?,?,?)}");
 			sp.setString("IN_CONVENIO",convenio);
 			sp.setString("IN_VERSION",version);
 			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
@@ -425,7 +425,343 @@ public class WS_Data {
 		return r;
 	}
 	
-		
+	public WS_Obj_CoberturaRest[] obtenWSObjCobRest(String convenio, String version){
+		int i = 0;
+		WS_Obj_CoberturaRest[] r = new WS_Obj_CoberturaRest[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_COBERTURA(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			r = new WS_Obj_CoberturaRest[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				r[i] = f.aisgnaWSObjCobRest(rs.getString("COD_COBERTURA"), rs.getString("DESCRIPCION"), rs.getString("ID_EMA"),rs.getString("SA_COBERTURA"),rs.getString("DED_COBERTURA"));
+				i = i + 1;
+			}
+			con.close();
+			} catch (SQLException e) {
+			r[0] = f.aisgnaWSObjCobRest("error", e.getMessage(), null, null, null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_TipoValor obtenWSTipoValor(String convenio, String version){
+		int i = 0;
+		WS_TipoValor r = new WS_TipoValor();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_TIPOVALOR(?,?,?)}");
+			sp.setString("IN_CONVENIO", convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_TIPOVALOR"), rs.getString("DESCRIPCION"), rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setTipoValor_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("Eror",e.getMessage(),null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}	public WS_TipoCarga obtenWSTipoCarga(String convenio, String version){
+		int i = 0;
+		WS_TipoCarga r = new WS_TipoCarga();
+		WS_Obj_Catalogo[] c= new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_TIPOCARGA(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_TIPOCARGA"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setTipoCarga_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_Servicio obtenWSServicio(String convenio, String version){
+		int i = 0;
+		WS_Servicio r = new WS_Servicio();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_SERVICIO(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_SERVICIO"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setServicio_data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_Uso obtenWSUso(String convenio, String version){
+		int i = 0;
+		WS_Uso r = new WS_Uso();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_USO(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_USO"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setUso_data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_DatosRiesgos obtenWSDatosRiesgos(String convenio, String version){
+		WS_DatosRiesgos r = new WS_DatosRiesgos();
+		r.setTipoValor(obtenWSTipoValor(convenio, version));
+		r.setTipoCarga(obtenWSTipoCarga(convenio, version));
+		r.setServicio(obtenWSServicio(convenio, version));
+		r.setUso(obtenWSUso(convenio, version));
+		return r;
+	}
+	
+	
+	public WS_MedioPago obtenWSMedioPago(String convenio, String version){
+		int i = 0;
+		WS_MedioPago r = new WS_MedioPago();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_MEDIOPAGO(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_MEDIOPAGO"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setMedioPago_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	public WS_FrecuenciaPago obtenWSFrecuenciaPago(String convenio, String version){
+		int i = 0;
+		WS_FrecuenciaPago r = new WS_FrecuenciaPago();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_FRECUENCIAPAGO(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_FRECUENCIAPAGO"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setFrecuenciaPago_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_Paquete obtenWSPaquete(String convenio, String version){
+		int i = 0;
+		WS_Paquete r = new WS_Paquete();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_PAQUETE(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_PAQUETE"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setPaquete_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	public WS_CanalVenta obtenWSCanalVenta(String convenio, String version){
+		int i = 0;
+		WS_CanalVenta r = new WS_CanalVenta();
+		WS_Obj_Catalogo[] c = new WS_Obj_Catalogo[i];
+		Func_auxiliar f = new Func_auxiliar(); 
+		conexion = new Conexion();
+		try{
+			Connection con =conexion.getconnection();
+			CallableStatement sp = con.prepareCall("{call SP_REST_CANALVENTA(?,?,?)}");
+			sp.setString("IN_CONVENIO",convenio);
+			sp.setString("IN_VERSION", version);
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			ResultSet rs = (ResultSet)sp.getObject("OUT_C");
+			while(rs.next()){
+				i = i + 1;
+			}
+			c = new WS_Obj_Catalogo[i];
+			sp.registerOutParameter("OUT_C", OracleTypes.CURSOR);
+			sp.execute();
+			rs = (ResultSet)sp.getObject("OUT_C");
+			i=0;
+			while(rs.next()){
+				c[i] = f.asignaWSData(rs.getString("COD_CANALVENTA"),rs.getString("DESCRIPCION"),rs.getString("ID_EMA"));
+				i = i + 1;
+			}
+			r.setCanalVenta_Data(c);
+			con.close();
+			} catch (SQLException e) {
+			c[0] = f.asignaWSData("error", e.getMessage(), null);
+			return r;
+		}finally{		
+	}
+		return r;
+	}
+	
+	public WS_DatosManejo obtenWSDatosManejo(String convenio, String version){
+		WS_DatosManejo r = new WS_DatosManejo();
+		r.setMediopago(obtenWSMedioPago(convenio, version));
+		r.setFrecuenciapago(obtenWSFrecuenciaPago(convenio, version));
+		r.setSegmento(obtenWSSegmentoMercado(convenio, version));
+		r.setPaquete(obtenWSPaquete(convenio, version));
+		r.setCanalventa(obtenWSCanalVenta(convenio, version));
+		return r;
+	}
 	
 	}
 

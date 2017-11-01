@@ -39,78 +39,93 @@
 				<select data-ng-model="deducibledm" data-ng-options="x.deducible for x in getDed">
 				</select>
 		</div>
+		<br>
 		<div data-ng-controller="dedrt">	
 			<label>Deducible RT</label>
 				<select data-ng-model="deduciblert" data-ng-options="x.deducible for x in getRt">
 				</select>
 		</div>
+		<br>
 		<div data-ng-controller="sarc">
 			<label>Responsabilidad Civil</label>
 				 <select data-ng-model="saresc" data-ng-options="x.sa for x in getRc"></select>
-		</div>	
+		</div>
+		<br>	
 		<div data-ng-controller="sarcp">
 			<label>RC personas en Exceso</label>
 				<select data-ng-model="sarcp" data-ng-options="x.sa for x in getRcp"></select>
 		</div>
+		<br>
 		<div data-ng-controller="sagmo">
 			<label>Gastos Medicos por Ocupante</label>
 				<select data-ng-model="sagmo" data-ng-options="x.sa for x in getsagmo"></select>
 		</div>
+		<br>
 		<div data-ng-controller="saacc">
 			<label>Accidentes al conductor</label>
 				<select data-ng-model="saacc" data-ng-options="x.sa for x in getsaacc"></select>
 		</div>
+		<br>
 		<div data-ng-controller="sarcv">
 			<label>RC Viajero</label>
 				<select data-ng-model="rcv" data-ng-options="x.sa for x in getrcv"></select>
-				
-		</div>
-		
-		
+		</div>	
 		</td>
 		<td>
+		<br>
+		<br>
 		<div>
 			<label>Extencion RC</label><input type="checkbox">
 		</div>
+		<br>
 		<div>
 			<label>Gastos Medicos por Evento</label><input type="checkbox">
 		</div>
+		<br>
 		<div>
 			<label>Defensa Legal</label><input type="checkbox">
 		</div>
+		<br>
 		<div>
 			<label>Servicios de Asistencia</label><input type="checkbox">
 		</div>
+		<br>
 		<div>
 			<label>Sigue con Auto</label><input type="checkbox">
 		</div>
+		<br>
 		<div data-ng-controller="uso">
 			<label>Uso</label>
 				<select data-ng-model="uso" data-ng-options="x.uso for x in getUso"></select>
 		</div>
+		<br>
 	    <div>
 			<label>Derechos de poliza</label>
 				<input type="number" min="0" max="" name="derechos">	
 		</div>
+		<br>
 		<div>
 			<label>Descuento</label>
 				<input type="number" min="0" max="" name="descuento">
 		</div>
+		<br>
 		<div>
 			<label>Comision</label>
 				<input type="number" min="0" max="" name="comision">
 		</div>
+		<br>
 		<div>
 			<label>Cesion de Comision</label>
 				<input type="number" min="0" max="" name="cesion">
 		</div>
-		
-		<input type="submit" value="Cotizar">	
+		<br>
+		<br>
+			
 			</td>
 		<tr>		
 	</table>
-	<div>
-		Marcas<input type="checkbox" data-ng-model="checked" aria-label="Toggle ngShow"><br />
+		<div align="center">
+		<input type="checkbox" id="marcas" data-ng-model="checked" aria-label="Toggle ngShow">Marcas
 		<div class="check-element animate-show-hide" data-ng-show="checked">
 		<input type="checkbox" data-ng-model="all">Seleccionar Todos
 			<table id="table-1" data-ng-controller="marca">
@@ -131,6 +146,11 @@
 			</table>
 		</div>
 		</div>
+	<br>		
+	<div align="center">
+		<input type="submit" value="Cotizar">
+	</div>
+		
 	</form>
 			
 			

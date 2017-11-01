@@ -81,8 +81,8 @@ color: #222;
   <dt onmouseover="javascript:montre('smenu2');" onmouseout="javascript:montre();">Catalogos</dt>
   <dd id="smenu2" onmouseover="javascript:montre('smenu2');" onmouseout="javascript:montre();">
    <ul>
-    <li><a href="catalogos.jsp"  target="central">Administracion</a></li>
-    <li><a href="#">Consulta</a></li>
+    <li><a href="mantenimientocatalogos.jsp"  target="central">Administracion</a></li>
+    <li><a href="catalogos.jsp">Consulta</a></li>
    </ul>
   </dd>
   <dt onmouseover="javascript:montre('smenu3');" onmouseout="javascript:montre();">Tarifa</dt>

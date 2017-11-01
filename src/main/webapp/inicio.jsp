@@ -3,7 +3,7 @@
 <% String usuario = request.getParameter("login"); %>
 <% String passe = request.getParameter("password"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app="Apollo_Entra">
+<html data-ng-app="Apollo_Entra">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 <script type="text/javascript" src="/js/serve.js">

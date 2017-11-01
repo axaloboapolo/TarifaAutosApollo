@@ -21,6 +21,7 @@ import mx.axa.tarifa.Objetos_Servicios.WS_CatCP;
 import mx.axa.tarifa.Objetos_Servicios.WS_DatosCliente;
 import mx.axa.tarifa.Objetos_Servicios.WS_DatosGenerales;
 import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Fichero;
+import mx.axa.tarifa.Objetos_Servicios.*;
 
 @Controller
 public class ApolloController {
@@ -136,4 +137,33 @@ public class ApolloController {
 		return p;
 	}
 
+	@RequestMapping(value="/wscoberturas", method=RequestMethod.GET)
+	public @ResponseBody WS_Obj_CoberturaRest[] getCoberturaRest(@RequestParam(value="convenio", required=true) String convenio,
+			  @RequestParam(value="version", required=true) String version) throws SQLException{
+		WS_Obj_CoberturaRest [] p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWSObjCobRest(convenio,version);
+		return p;
+	}
+	
+	@RequestMapping(value="/wsriesgos", method=RequestMethod.GET)
+	public @ResponseBody WS_DatosRiesgos getDatosRiesgos(@RequestParam(value="convenio", required=true) String convenio,
+			  @RequestParam(value="version", required=true) String version) throws SQLException{
+		WS_DatosRiesgos p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWSDatosRiesgos(convenio,version);
+		return p;
+	}
+	
+	@RequestMapping(value="/wsmanejo", method=RequestMethod.GET)
+	public @ResponseBody WS_DatosManejo getDatosManejo(@RequestParam(value="convenio", required=true) String convenio,
+			  @RequestParam(value="version", required=true) String version) throws SQLException{
+		WS_DatosManejo p;
+		WS_Data o = new WS_Data();
+		p = o.obtenWSDatosManejo(convenio,version);
+		return p;
+	}
+	 //@RequestMapping(value="/tarifa", method=RequestMethod.GET)
+	 
+	
 }
