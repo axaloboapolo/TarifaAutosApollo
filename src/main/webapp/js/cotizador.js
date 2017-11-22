@@ -92,3 +92,7 @@ var app = angular.module('cotizar', []);
 		  checkbox.click();
 		  expect(checkElem.isDisplayed()).toBe(true);
 		});
+	
+		
+		
+	})

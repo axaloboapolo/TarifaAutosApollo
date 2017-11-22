@@ -1,5 +1,6 @@
 package mx.axa.autos.tarifa.TarifaAutosApollo;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import mx.axa.autos.tarifa.Modelo.Call_Sp;
 import mx.axa.autos.tarifa.Modelo.WS_Data;
+import mx.axa.autos.tarifa.Objetos.Obj_CargaArchivo_Cot;
 import mx.axa.autos.tarifa.Objetos.Obj_Catalogo;
 import mx.axa.autos.tarifa.Objetos.Obj_Cliente;
 import mx.axa.autos.tarifa.Objetos.Obj_DatosGenerales;
@@ -22,6 +24,8 @@ import mx.axa.tarifa.Objetos_Servicios.WS_DatosCliente;
 import mx.axa.tarifa.Objetos_Servicios.WS_DatosGenerales;
 import mx.axa.tarifa.Objetos_Servicios.WS_Obj_Fichero;
 import mx.axa.tarifa.Objetos_Servicios.*;
+import mx.axa.autos.tarifa.Funciones.Func_LeerCsv;
+import mx.axa.autos.tarifa.Funciones.Func_auxiliar;
 
 @Controller
 public class ApolloController {
@@ -163,7 +167,13 @@ public class ApolloController {
 		p = o.obtenWSDatosManejo(convenio,version);
 		return p;
 	}
-	 //@RequestMapping(value="/tarifa", method=RequestMethod.GET)
 	 
+	@RequestMapping(value="/wscotporarchivo", method=RequestMethod.GET)
+	 public @ResponseBody Obj_CargaArchivo_Cot[] getCotArchivo(@RequestParam(value="ruta", required = true)String ruta) throws IOException{
+		Obj_CargaArchivo_Cot[] r;
+		Func_LeerCsv l = new Func_LeerCsv();
+		r = l.leerArchivoCot(ruta);
+		return r;
+	}
 	
 }

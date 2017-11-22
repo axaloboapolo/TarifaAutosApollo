@@ -96,7 +96,7 @@
 		<br>
 		<div data-ng-controller="uso">
 			<label>Uso</label>
-				<select data-ng-model="uso" data-ng-options="x.uso for x in getUso"></select>
+				<select data-ng-model="uso" data-ng-options="x.descripcion for x in getUso"></select>
 		</div>
 		<br>
 	    <div>

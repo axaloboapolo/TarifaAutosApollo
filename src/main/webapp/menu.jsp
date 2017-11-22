@@ -82,7 +82,7 @@ color: #222;
   <dd id="smenu2" onmouseover="javascript:montre('smenu2');" onmouseout="javascript:montre();">
    <ul>
     <li><a href="mantenimientocatalogos.jsp"  target="central">Administracion</a></li>
-    <li><a href="catalogos.jsp">Consulta</a></li>
+    <li><a href="catalogos.jsp" target="central">Consulta</a></li>
    </ul>
   </dd>
   <dt onmouseover="javascript:montre('smenu3');" onmouseout="javascript:montre();">Tarifa</dt>
@@ -97,7 +97,7 @@ color: #222;
   <dt onmouseover="javascript:montre('smenu4');" onmouseout="javascript:montre();">Cotizador</dt>
   <dd id="smenu4" onmouseover="javascript:montre('smenu4');" onmouseout="javascript:montre();">
    <ul>
-    <li><a href="#">Carga por archivo</a></li>
+    <li><a href="cargaxarchivotarifa.jsp" target="central">Carga por archivo</a></li>
     <li><a href="cotizacion.jsp" target="central">Cotizar parque</a></li>
    </ul>
   </dd>
