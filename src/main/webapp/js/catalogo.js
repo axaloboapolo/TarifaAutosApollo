@@ -6,3 +6,8 @@ var app = angular.module('catalogos', []);
 			 $scope.getCatalogo = response.data;
 		 });
 	});
+	
+	app.controller('catalogo',function($scope,$http){
+		$http.get('http://localhost:8090/indicecat')
+		
+	})

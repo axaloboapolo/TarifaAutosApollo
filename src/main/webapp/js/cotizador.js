@@ -95,4 +95,4 @@ var app = angular.module('cotizar', []);
 	
 		
 		
-	})
+	});
